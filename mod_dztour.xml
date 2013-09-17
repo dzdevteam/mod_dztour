@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" version="3.1" method="upgrade">
+    <name>mod_dztour</name>
+    <creationDate>July 2013</creationDate>
+    <author>DZ Team</author>
+    <authorEmail>dev@dezign.vn</authorEmail>
+    <authorUrl>dezign.vn</authorUrl>
+    <copyright>(C) 2013 DZ Creative Studio. All rights reserved.</copyright>
+    <version>1.0.0</version>
+    <description>MOD_DZTOUR_DESC</description>
+    
+    <files>
+        <filename>mod_dztour.xml</filename>
+        <filename module="mod_dztour">mod_dztour.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+    </files>
+    
+    <languages>
+        <!-- Any language files included with the module -->
+        <language tag="en-GB">en-GB.mod_dztour.ini</language>
+        <language tag="en-GB">en-GB.mod_dztour.sys.ini</language>
+        <language tag="vi-VN">vi-VN.mod_dztour.ini</language>
+        <language tag="vi-VN">vi-VN.mod_dztour.sys.ini</language>
+    </languages>
+    
+    <!-- Optional parameters -->
+    <config>
+        <fields name="params">
+            <fieldset name="filtering" label="COM_DZTOUR_CONFIG_FIELDSET_FILTERING">
+                <field
+                    name="tours_display_items"
+                    type="radio" default="all" class="btn-group"
+                    label="COM_DZTOUR_CONFIG_TOURS_LBL_DISPLAY_ITEMS"
+                    description="COM_DZTOUR_CONFIG_TOURS_DESC_DISPLAY_ITEMS">
+                    <option value="all">COM_DZTOUR_OPTION_ALL_ITEMS</option>
+                    <option value="special">COM_DZTOUR_OPTION_SPECIAL_ITEMS</option>
+                </field>
+                <field
+                    name="tours_special_types"
+                    type="list" multiple="true" default="featured"
+                    label="COM_DZTOUR_CONFIG_TOURS_LBL_SPECIAL_TYPES"
+                    description="COM_DZTOUR_CONFIG_TOURS_DESC_SPECIAL_TYPES">
+                    <option value="featured">COM_DZTOUR_OPTION_FEATURED</option>
+                    <option value="on_offer">COM_DZTOUR_OPTION_ON_OFFER</option>
+                    <option value="saleoff">COM_DZTOUR_OPTION_SALEOFF</option>
+                </field>
+                
+                <field type="spacer" />
+                <field
+                    name="tours_typeid"
+                    type="category" extension="com_dztour.tours.typeid"
+                    label="COM_DZTOUR_CONFIG_TOURS_LBL_TYPE"
+                    description="COM_DZTOUR_CONFIG_TOURS_DESC_TYPE">
+                    <option value="">COM_DZTOUR_OPTION_SELECT_TYPE</option>
+                </field>
+                <field
+                    name="tours_locationid"
+                    type="category" extension="com_dztour.tours.locationid"
+                    label="COM_DZTOUR_CONFIG_TOURS_LBL_LOCATION"
+                    description="COM_DZTOUR_CONFIG_TOURS_DESC_LOCATION">
+                    <option value="">COM_DZTOUR_OPTION_SELECT_LOCATION</option>
+                </field>
+                <field
+                    name="tours_tags" type="tag" 
+                    multiple="true" custom="deny" mode="nested"
+                    label="COM_DZTOUR_CONFIG_TOURS_LBL_TAGS"
+                    description="COM_DZTOUR_CONFIG_TOURS_DESC_TAGS" />
+                
+                <field type="spacer" />
+                <field
+                    name="tours_order_by" 
+                    type="list" default="created"
+                    label="COM_DZTOUR_CONFIG_TOURS_LBL_ORDERBY"
+                    description="COM_DZTOUR_CONFIG_TOURS_DESC_ORDERBY">
+                    <option value="created">COM_DZTOUR_OPTION_CREATED</option>
+                    <option value="title">COM_DZTOUR_OPTION_TITLE</option>
+                    <option value="ordering">COM_DZTOUR_OPTION_ORDERING</option>
+                </field>
+                <field
+                    name="tours_order_direction" 
+                    type="list" default="DESC"
+                    label="COM_DZTOUR_CONFIG_TOURS_LBL_ORDER_DIRECTION"
+                    description="COM_DZTOUR_CONFIG_TOURS_DESC_ORDER_DIRECTION">
+                    <option value="ASC">JGLOBAL_ORDER_ASCENDING</option>
+                    <option value="DESC">JGLOBAL_ORDER_DESCENDING</option>
+                </field>
+                <field
+                    name="tours_limit" type="text"
+                    default="12" filter="int"
+                    label="COM_DZTOUR_CONFIG_TOURS_LBL_LIMIT"
+                    description="COM_DZTOUR_CONFIG_TOURS_DESC_LIMIT" />
+            </fieldset>
+            <fieldset name="advanced">
+                <field name="layout" type="modulelayout"
+                    label="JFIELD_ALT_LAYOUT_LABEL"
+                    description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+
+                <field name="moduleclass_sfx" type="textarea" rows="3"
+                    label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                    description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+
+                <field name="cache" type="list"
+                    default="1"
+                    label="COM_MODULES_FIELD_CACHING_LABEL"
+                    description="COM_MODULES_FIELD_CACHING_DESC"
+                >
+                    <option value="1">JGLOBAL_USE_GLOBAL</option>
+                    <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+
+                <field name="cache_time" type="text"
+                    default="900"
+                    label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                    description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+                <field
+                    name="cachemode"
+                    type="hidden"
+                    default="static">
+                    <option
+                        value="static"></option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>
